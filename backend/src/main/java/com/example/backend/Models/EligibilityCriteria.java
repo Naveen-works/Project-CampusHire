@@ -20,7 +20,10 @@ public class EligibilityCriteria {
     private PlacementDrive drive;
 
     private Double minCgpa;
+    @Column(name = "min_x_marks")
     private Double minXMarks;
+
+    @Column(name = "min_xii_marks")
     private Double minXiiMarks;
     private Integer maxStandingArrears;
     private Integer maxHistoryOfArrears;

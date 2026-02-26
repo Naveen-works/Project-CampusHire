@@ -6,4 +6,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PlacementDriveRepository extends JpaRepository<PlacementDrive, Long> {
+    java.util.List<PlacementDrive> findByStatusIn(
+            java.util.List<com.example.backend.Models.enums.DriveStatus> statuses);
+
+    long countByStatus(com.example.backend.Models.enums.DriveStatus status);
+
+    java.util.Optional<PlacementDrive> findTopByOrderByCtcLpaDesc();
 }

@@ -126,7 +126,7 @@ INSERT INTO placement_drives (company_id, title, role, ctc_lpa, status) VALUES
 (2, 'Zoho Developer Hiring', 'Software Developer', 8.50, 'UPCOMING');
 
 -- Eligibility Criteria Engine
-INSERT INTO drive_eligibility (drive_id, min_cgpa, minxmarks, min_xii_marks, max_standing_arrears, max_history_of_arrears) VALUES
+INSERT INTO drive_eligibility (drive_id, min_cgpa, min_x_marks, min_xii_marks, max_standing_arrears, max_history_of_arrears) VALUES
 (1, 6.00, 60.00, 60.00, 1, 2), -- Relaxed TCS criteria
 (2, 7.50, 75.00, 75.00, 0, 0), -- Strict TCS Digital criteria
 (3, 8.00, 80.00, 80.00, 0, 1); -- Strict Zoho criteria

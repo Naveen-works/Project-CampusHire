@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DriveApplicationRepository extends JpaRepository<DriveApplication, Long> {
+    boolean existsByStudentProfileIdAndDriveId(Long studentId, Long driveId);
+
+    java.util.List<DriveApplication> findByStudentProfileId(Long studentId);
 }

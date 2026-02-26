@@ -9,4 +9,8 @@ import java.util.Optional;
 @Repository
 public interface StudentProfileRepository extends JpaRepository<StudentProfile, Long> {
     Optional<StudentProfile> findByRollNo(String rollNo);
+
+    Optional<StudentProfile> findByUserEmail(String email);
+
+    long countByIsPlacedTrue();
 }

@@ -11,4 +11,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByEmail(String email);
 
     Optional<User> findByUniversityRegNo(String universityRegNo);
+
+    long countByRole(com.example.backend.Models.enums.Role role);
 }

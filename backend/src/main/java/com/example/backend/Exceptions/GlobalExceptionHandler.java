@@ -29,6 +29,16 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(ApiResponse.error(ex.getMessage()), HttpStatus.CONFLICT);
     }
 
+    @ExceptionHandler(InvalidDriveStateException.class)
+    public ResponseEntity<ApiResponse<Void>> handleInvalidDriveState(InvalidDriveStateException ex) {
+        return new ResponseEntity<>(ApiResponse.error(ex.getMessage()), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(EligibilityNotMetException.class)
+    public ResponseEntity<ApiResponse<Void>> handleEligibilityNotMet(EligibilityNotMetException ex) {
+        return new ResponseEntity<>(ApiResponse.error(ex.getMessage()), HttpStatus.FORBIDDEN);
+    }
+
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ApiResponse<Void>> handleIllegalArgument(IllegalArgumentException ex) {
         return new ResponseEntity<>(ApiResponse.error(ex.getMessage()), HttpStatus.BAD_REQUEST);

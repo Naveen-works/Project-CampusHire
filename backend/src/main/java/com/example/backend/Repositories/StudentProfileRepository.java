@@ -13,4 +13,19 @@ public interface StudentProfileRepository extends JpaRepository<StudentProfile, 
     Optional<StudentProfile> findByUserEmail(String email);
 
     long countByIsPlacedTrue();
+
+    long countByVerificationStatus(com.example.backend.Models.enums.VerificationStatus status);
+
+    @org.springframework.data.jpa.repository.Query("SELECT COALESCE(MAX(s.highestPackageLpa), 0) FROM StudentProfile s")
+    Double findHighestCtc();
+
+    @org.springframework.data.jpa.repository.Query("SELECT COALESCE(AVG(s.highestPackageLpa), 0) FROM StudentProfile s WHERE s.isPlaced = true")
+    Double findAverageCtc();
+
+    @org.springframework.data.jpa.repository.Query("SELECT s FROM StudentProfile s WHERE s.verificationStatus = 'VERIFIED' AND (:query IS NULL OR LOWER(s.user.email) LIKE LOWER(CONCAT('%', :query, '%')) OR LOWER(s.rollNo) LIKE LOWER(CONCAT('%', :query, '%')) )")
+    java.util.List<StudentProfile> searchVerifiedStudents(
+            @org.springframework.data.repository.query.Param("query") String query);
+
+    @org.springframework.data.jpa.repository.Query("SELECT d.name, COUNT(s) FROM StudentProfile s JOIN s.user u JOIN u.department d WHERE s.isPlaced = true GROUP BY d.name")
+    java.util.List<Object[]> countPlacementsByDepartment();
 }

@@ -9,4 +9,11 @@ public interface DriveApplicationRepository extends JpaRepository<DriveApplicati
     boolean existsByStudentProfileIdAndDriveId(Long studentId, Long driveId);
 
     java.util.List<DriveApplication> findByStudentProfileId(Long studentId);
+
+    long countByDriveCompanyIdAndStage(Long companyId, com.example.backend.Models.enums.ApplicationStage stage);
+
+    java.util.List<DriveApplication> findByDriveIdAndStage(Long driveId,
+            com.example.backend.Models.enums.ApplicationStage stage);
+
+    java.util.List<DriveApplication> findByDriveId(Long driveId);
 }

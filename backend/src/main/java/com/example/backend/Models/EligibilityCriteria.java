@@ -28,6 +28,13 @@ public class EligibilityCriteria {
     private Integer maxStandingArrears;
     private Integer maxHistoryOfArrears;
 
+    private Integer graduationYear;
+
+    @ElementCollection
+    @CollectionTable(name = "drive_required_skills", joinColumns = @JoinColumn(name = "drive_id"))
+    @Column(name = "skill")
+    private List<String> requiredSkills;
+
     @ManyToMany
     @JoinTable(name = "drive_allowed_departments", joinColumns = @JoinColumn(name = "drive_id"), inverseJoinColumns = @JoinColumn(name = "department_id"))
     private List<Department> allowedDepartments;

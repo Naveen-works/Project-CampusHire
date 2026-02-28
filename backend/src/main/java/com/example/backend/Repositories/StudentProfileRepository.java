@@ -28,4 +28,14 @@ public interface StudentProfileRepository extends JpaRepository<StudentProfile, 
 
     @org.springframework.data.jpa.repository.Query("SELECT d.name, COUNT(s) FROM StudentProfile s JOIN s.user u JOIN u.department d WHERE s.isPlaced = true GROUP BY d.name")
     java.util.List<Object[]> countPlacementsByDepartment();
+
+    // Faculty Scoped Queries
+    java.util.List<StudentProfile> findByUserDepartmentId(Long departmentId);
+
+    long countByUserDepartmentId(Long departmentId);
+
+    long countByUserDepartmentIdAndVerificationStatus(Long departmentId,
+            com.example.backend.Models.enums.VerificationStatus status);
+
+    long countByUserDepartmentIdAndIsPlacedTrue(Long departmentId);
 }

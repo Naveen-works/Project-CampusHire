@@ -16,4 +16,14 @@ public interface DriveApplicationRepository extends JpaRepository<DriveApplicati
             com.example.backend.Models.enums.ApplicationStage stage);
 
     java.util.List<DriveApplication> findByDriveId(Long driveId);
+
+    // Faculty Scoped Queries
+    java.util.List<DriveApplication> findByStudentProfileUserDepartmentId(Long departmentId);
+
+    java.util.List<DriveApplication> findByDriveIdAndStudentProfileUserDepartmentId(Long driveId, Long departmentId);
+
+    long countByStudentProfileUserDepartmentIdAndStage(Long departmentId,
+            com.example.backend.Models.enums.ApplicationStage stage);
+
+    long countByDriveIdAndStudentProfileUserDepartmentId(Long driveId, Long departmentId);
 }
